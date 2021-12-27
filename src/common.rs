@@ -13,3 +13,7 @@ pub fn numbers(input: &str) -> Vec<i128> {
             .expect("Invalid number"))
         .collect()
 }
+
+pub fn parse_binary(value: &str) -> u128 {
+    u128::from_str_radix(value, 2).expect("Could not parse binary")
+}

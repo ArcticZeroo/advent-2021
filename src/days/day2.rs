@@ -3,7 +3,7 @@ use crate::{common, world};
 
 struct MoveCommand {
     direction: world::MovementDirection,
-    count: i64
+    count: i64,
 }
 
 fn parse_line(line: &str) -> MoveCommand {
@@ -21,7 +21,7 @@ fn parse_line(line: &str) -> MoveCommand {
 
     MoveCommand {
         direction,
-        count
+        count,
     }
 }
 
@@ -51,8 +51,8 @@ fn find_aim_value(commands: Vec<MoveCommand>) -> i64 {
             world::MovementDirection::Up => aim -= command.count,
             world::MovementDirection::Forward => {
                 horizontal += command.count;
-                depth += (aim * command.count);
-            },
+                depth += aim * command.count;
+            }
             _ => panic!("Invalid direction {:?}", command.direction)
         }
     }
